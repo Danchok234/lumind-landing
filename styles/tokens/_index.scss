@@ -1,0 +1,9 @@
+// ─────────────────────────────────────────────
+// TOKEN INDEX — import this barrel in any SCSS Module
+// ─────────────────────────────────────────────
+@forward 'colors';
+@forward 'typography';
+@forward 'spacing';
+@forward 'radii';
+@forward 'shadows';
+@forward 'layout';

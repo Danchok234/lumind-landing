@@ -1,0 +1,24 @@
+@use 'styles/tokens' as t;
+
+.card {
+  background-color: t.$color-white;
+  border-radius: t.$radius-md;
+  padding: 16px 16px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow t.$transition-base;
+}
+
+.card--default {
+  box-shadow: t.$shadow-card;
+  border: 1px solid t.$color-black-06;
+
+  &:hover {
+    box-shadow: t.$shadow-soft;
+  }
+}
+
+.card--glow {
+  box-shadow: t.$shadow-glow;
+  border: 1px solid t.$color-lighter-purple;
+}

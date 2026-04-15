@@ -1,0 +1,18 @@
+// ─────────────────────────────────────────────
+// BREAKPOINT MIXINS
+// ─────────────────────────────────────────────
+@use '../tokens/layout' as l;
+
+// Mobile-first: min-width
+@mixin sm   { @media (min-width: l.$bp-sm)  { @content; } }
+@mixin md   { @media (min-width: l.$bp-md)  { @content; } }
+@mixin lg   { @media (min-width: l.$bp-lg)  { @content; } }
+@mixin xl   { @media (min-width: l.$bp-xl)  { @content; } }
+@mixin xxl  { @media (min-width: l.$bp-2xl) { @content; } }
+
+// Desktop-first: max-width
+@mixin below-sm   { @media (max-width: #{l.$bp-sm - 1})  { @content; } }
+@mixin below-md   { @media (max-width: #{l.$bp-md - 1})  { @content; } }
+@mixin below-lg   { @media (max-width: #{l.$bp-lg - 1})  { @content; } }
+@mixin below-xl   { @media (max-width: #{l.$bp-xl - 1})  { @content; } }
+@mixin below-xxl  { @media (max-width: #{l.$bp-2xl - 1}) { @content; } }

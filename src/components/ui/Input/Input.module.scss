@@ -1,0 +1,72 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  @include m.text-p-small;
+  color: t.$color-black;
+  font-weight: t.$fw-medium;
+}
+
+.input {
+  width: 100%;
+  height: 52px;
+  padding: t.$padding-input;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$color-black-20;
+  background-color: t.$color-white;
+  color: t.$color-black;
+
+  @include m.text-p;
+
+  outline: none;
+  transition:
+    border-color t.$transition-base,
+    box-shadow t.$transition-base;
+
+  &::placeholder {
+    color: t.$color-black-25;
+  }
+
+  &:hover {
+    border-color: t.$color-black-70;
+  }
+
+  &:focus {
+    border-color: t.$color-purple;
+    box-shadow: 0 0 0 3px rgba(131, 85, 248, 0.15);
+  }
+}
+
+// ── States ────────────────────────────────────
+
+.wrapper--error {
+  .input {
+    @include m.state-error;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(255, 95, 95, 0.15);
+    }
+  }
+}
+
+.wrapper--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.error {
+  @include m.text-p-small;
+  color: t.$color-error;
+}
+
+.hint {
+  @include m.text-p-small;
+  color: t.$color-black-70;
+}

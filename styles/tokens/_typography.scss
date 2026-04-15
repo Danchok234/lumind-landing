@@ -1,0 +1,81 @@
+// ─────────────────────────────────────────────
+// TYPOGRAPHY TOKENS
+// Extracted from Lumind UI Kit
+// ─────────────────────────────────────────────
+
+// Font families
+$font-primary:   'Satoshi', sans-serif;  // main product font
+$font-display:   'Satoshi', sans-serif;  // headings share Satoshi
+
+// Font weights
+$fw-regular:   400;
+$fw-medium:    500;
+$fw-semibold:  600;
+$fw-bold:      700;
+
+// Font size scale (px → rem at 16px base)
+$fs-xs:    12px;   // 0.75rem
+$fs-sm:    15px;   // 0.9375rem
+$fs-base:  17px;   // 1.0625rem
+$fs-md:    24px;   // 1.5rem
+$fs-lg:    32px;   // 2rem
+$fs-xl:    48px;   // 3rem
+$fs-2xl:   64px;   // 4rem
+$fs-3xl:   96px;   // 6rem
+
+// Line heights
+$lh-tight:    1.1em;
+$lh-snug:     1.2em;
+$lh-normal:   1.35em;
+$lh-relaxed:  1.45em;
+$lh-loose:    1.5em;
+
+// Letter spacing (negative tracking per kit)
+$ls-none:    0;
+$ls-tight:   -0.02em;   // -2%
+$ls-tighter: -0.03em;   // -3%
+$ls-tight-4: -0.04em;   // -4%
+$ls-tight-5: -0.05em;   // -5%
+
+// ── Semantic text style tokens ──────────────
+// desktop/h1 (implied from scale)
+$text-h1-size:    $fs-3xl;
+$text-h1-weight:  $fw-medium;
+$text-h1-lh:      $lh-tight;
+$text-h1-ls:      $ls-tight-4;
+
+// desktop/h2
+$text-h2-size:    $fs-xl;
+$text-h2-weight:  $fw-medium;
+$text-h2-lh:      $lh-snug;
+$text-h2-ls:      $ls-tighter;
+
+// desktop/h3 (implied from scale)
+$text-h3-size:    $fs-lg;
+$text-h3-weight:  $fw-medium;
+$text-h3-lh:      $lh-snug;
+$text-h3-ls:      $ls-tight;
+
+// desktop/h4
+$text-h4-size:    $fs-md;
+$text-h4-weight:  $fw-medium;
+$text-h4-lh:      $lh-snug;
+$text-h4-ls:      $ls-tight;
+
+// desktop/p
+$text-p-size:     $fs-base;
+$text-p-weight:   $fw-regular;
+$text-p-lh:       $lh-normal;
+$text-p-ls:       $ls-tight;
+
+// desktop/p-small
+$text-p-sm-size:   $fs-sm;
+$text-p-sm-weight: $fw-regular;
+$text-p-sm-lh:     $lh-normal;
+$text-p-sm-ls:     $ls-tight;
+
+// desktop/link or button
+$text-btn-size:    $fs-base;
+$text-btn-weight:  $fw-medium;
+$text-btn-lh:      1em;
+$text-btn-ls:      $ls-tight;

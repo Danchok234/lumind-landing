@@ -1,0 +1,32 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.text-h1 {
+  @include m.text-h1;
+  color: t.$color-black;
+}
+
+.text-h2 {
+  @include m.text-h2;
+  color: t.$color-black;
+}
+
+.text-h3 {
+  @include m.text-h3;
+  color: t.$color-black;
+}
+
+.text-h4 {
+  @include m.text-h4;
+  color: t.$color-black;
+}
+
+.text-p {
+  @include m.text-p;
+  color: t.$color-black;
+}
+
+.text-p-small {
+  @include m.text-p-small;
+  color: t.$color-black-70;
+}

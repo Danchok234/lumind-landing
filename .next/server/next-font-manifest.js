@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/danyaoleynik/Desktop/code/lumind_landing/src/app/layout\":[\"static/media/333ab73b5541c2f6-s.p.otf\",\"static/media/6c3b16f6d0ef383f-s.p.otf\",\"static/media/04ca08d0bf127403-s.p.otf\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

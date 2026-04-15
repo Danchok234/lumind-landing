@@ -1,0 +1,43 @@
+// ─────────────────────────────────────────────
+// STATE MIXINS — hover, focus, active, disabled
+// ─────────────────────────────────────────────
+@use '../tokens/colors' as c;
+@use '../tokens/layout' as l;
+
+// Standard interactive focus ring (keyboard accessible)
+@mixin focus-ring($color: c.$color-purple) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
+}
+
+// Disabled: reduce opacity, block pointer events
+@mixin disabled {
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+// Press / active — scale down
+@mixin press-scale($scale: 0.92) {
+  &:active {
+    transform: scale($scale);
+    transition: transform l.$transition-fast;
+  }
+}
+
+// Error state — applies to form fields
+@mixin state-error {
+  border-color: c.$color-error !important;
+  color: c.$color-error;
+}
+
+// Success state
+@mixin state-success($success-color: #34C17A) {
+  border-color: $success-color !important;
+  color: $success-color;
+}

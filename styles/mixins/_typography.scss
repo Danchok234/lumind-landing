@@ -1,0 +1,60 @@
+// ─────────────────────────────────────────────
+// TYPOGRAPHY MIXINS
+// ─────────────────────────────────────────────
+@use '../tokens/typography' as t;
+
+@mixin text-h1 {
+  font-family: t.$font-primary;
+  font-size: t.$text-h1-size;
+  font-weight: t.$text-h1-weight;
+  line-height: t.$text-h1-lh;
+  letter-spacing: t.$text-h1-ls;
+}
+
+@mixin text-h2 {
+  font-family: t.$font-primary;
+  font-size: t.$text-h2-size;
+  font-weight: t.$text-h2-weight;
+  line-height: t.$text-h2-lh;
+  letter-spacing: t.$text-h2-ls;
+}
+
+@mixin text-h3 {
+  font-family: t.$font-primary;
+  font-size: t.$text-h3-size;
+  font-weight: t.$text-h3-weight;
+  line-height: t.$text-h3-lh;
+  letter-spacing: t.$text-h3-ls;
+}
+
+@mixin text-h4 {
+  font-family: t.$font-primary;
+  font-size: t.$text-h4-size;
+  font-weight: t.$text-h4-weight;
+  line-height: t.$text-h4-lh;
+  letter-spacing: t.$text-h4-ls;
+}
+
+@mixin text-p {
+  font-family: t.$font-primary;
+  font-size: t.$text-p-size;
+  font-weight: t.$text-p-weight;
+  line-height: t.$text-p-lh;
+  letter-spacing: t.$text-p-ls;
+}
+
+@mixin text-p-small {
+  font-family: t.$font-primary;
+  font-size: t.$text-p-sm-size;
+  font-weight: t.$text-p-sm-weight;
+  line-height: t.$text-p-sm-lh;
+  letter-spacing: t.$text-p-sm-ls;
+}
+
+@mixin text-btn {
+  font-family: t.$font-primary;
+  font-size: t.$text-btn-size;
+  font-weight: t.$text-btn-weight;
+  line-height: t.$text-btn-lh;
+  letter-spacing: t.$text-btn-ls;
+}

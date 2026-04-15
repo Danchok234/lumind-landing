@@ -1,0 +1,36 @@
+// ─────────────────────────────────────────────
+// SPACING TOKENS
+// Extracted from Lumind UI Kit
+// ─────────────────────────────────────────────
+
+$space-0:    0px;
+$space-1:    8px;
+$space-2:    10px;
+$space-3:    12px;
+$space-4:    16px;
+$space-5:    20px;
+$space-6:    24px;
+$space-7:    30px;
+$space-8:    40px;
+$space-9:    60px;
+$space-10:   80px;
+$space-11:   160px;
+
+// Semantic aliases
+$gap-xs:     $space-1;    // 8px
+$gap-sm:     $space-2;    // 10px
+$gap-md:     $space-5;    // 20px
+$gap-lg:     $space-8;    // 40px
+$gap-xl:     $space-9;    // 60px
+$gap-2xl:    $space-10;   // 80px
+$gap-3xl:    $space-11;   // 160px
+
+// Section vertical padding
+$section-py:     $space-10;   // 80px  — tight sections
+$section-py-lg:  $space-11;   // 160px — spacious sections
+
+// Component internal padding
+$padding-btn-x:  40px;
+$padding-btn-y:  12px;
+$padding-card:   16px 16px 32px;
+$padding-input:  10px 20px 12px;

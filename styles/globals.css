@@ -1,0 +1,161 @@
+/* ─────────────────────────────────────────────
+   LUMIND GLOBAL STYLESHEET
+   Tailwind v4 + CSS custom properties (design tokens)
+   ───────────────────────────────────────────── */
+
+@import "tailwindcss";
+
+/* ── CSS custom properties (runtime tokens) ── */
+:root {
+  /* Colors */
+  --color-purple:          #8355F8;
+  --color-light-purple:    #E6DCFF;
+  --color-lighter-purple:  #E1D4FF;
+  --color-lightest-purple: #E9E1FF;
+  --color-black:           #202020;
+  --color-white:           #FFFFFF;
+  --color-bg:              #F6F6F6;
+  --color-dark-navy:       #0F1422;
+  --color-error:           #FF5F5F;
+
+  /* Black alpha */
+  --color-black-02:  rgba(32, 32, 32, 0.02);
+  --color-black-06:  rgba(32, 32, 32, 0.06);
+  --color-black-10:  rgba(32, 32, 32, 0.10);
+  --color-black-20:  rgba(32, 32, 32, 0.20);
+  --color-black-25:  rgba(32, 32, 32, 0.25);
+  --color-black-70:  rgba(32, 32, 32, 0.70);
+
+  /* White alpha */
+  --color-white-25:  rgba(255, 255, 255, 0.25);
+  --color-white-60:  rgba(255, 255, 255, 0.60);
+
+  /* Purple alpha */
+  --color-light-purple-50: rgba(230, 220, 255, 0.50);
+  --color-light-purple-80: rgba(230, 220, 255, 0.80);
+
+  /* Typography */
+  --font-primary: var(--font-satoshi), 'Satoshi', system-ui, sans-serif;
+
+  /* Radius */
+  --radius-xs:    5px;
+  --radius-sm:    10px;
+  --radius-md:    16px;
+  --radius-lg:    20px;
+  --radius-xl:    92px;
+  --radius-full:  100px;
+
+  /* Shadows */
+  --shadow-card:  0px 0px 16px 2px rgba(32, 32, 32, 0.02);
+  --shadow-soft:  0px 0px 12px 0px rgba(45, 45, 45, 0.06);
+  --shadow-glow:  15px 35px 32px 16px rgba(97, 34, 255, 0.06),
+                  inset 0px 0px 32px 4px rgba(255, 255, 255, 0.60);
+
+  /* Transitions */
+  --transition-fast:    150ms ease;
+  --transition-base:    250ms ease;
+  --transition-slow:    400ms ease;
+  --transition-spring:  300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --container-max:  1420px;
+  --grid-gutter:    20px;
+}
+
+/* ── Tailwind v4 theme extension ── */
+@theme {
+  /* Colors */
+  --color-purple:          #8355F8;
+  --color-light-purple:    #E6DCFF;
+  --color-lighter-purple:  #E1D4FF;
+  --color-lightest-purple: #E9E1FF;
+  --color-brand-black:     #202020;
+  --color-bg-base:         #F6F6F6;
+  --color-dark-navy:       #0F1422;
+  --color-error:           #FF5F5F;
+
+  /* Font families */
+  --font-family-sans:    'Satoshi', sans-serif;
+  --font-family-primary: 'Satoshi', sans-serif;
+
+  /* Font sizes */
+  --font-size-xs:    12px;
+  --font-size-sm:    15px;
+  --font-size-base:  17px;
+  --font-size-md:    24px;
+  --font-size-lg:    32px;
+  --font-size-xl:    48px;
+  --font-size-2xl:   64px;
+  --font-size-3xl:   96px;
+
+  /* Border radii */
+  --radius-xs:    5px;
+  --radius-sm:    10px;
+  --radius-md:    16px;
+  --radius-lg:    20px;
+  --radius-xl:    92px;
+  --radius-full:  100px;
+
+  /* Spacing scale (aligned with tokens) */
+  --spacing-1:   8px;
+  --spacing-2:   10px;
+  --spacing-3:   12px;
+  --spacing-4:   16px;
+  --spacing-5:   20px;
+  --spacing-6:   24px;
+  --spacing-7:   30px;
+  --spacing-8:   40px;
+  --spacing-9:   60px;
+  --spacing-10:  80px;
+  --spacing-11:  160px;
+
+  /* Shadows */
+  --shadow-card: 0px 0px 16px 2px rgba(32, 32, 32, 0.02);
+  --shadow-soft: 0px 0px 12px 0px rgba(45, 45, 45, 0.06);
+  --shadow-glow: 15px 35px 32px 16px rgba(97, 34, 255, 0.06),
+                 inset 0px 0px 32px 4px rgba(255, 255, 255, 0.60);
+
+  /* Breakpoints */
+  --breakpoint-sm:   480px;
+  --breakpoint-md:   768px;
+  --breakpoint-lg:   1024px;
+  --breakpoint-xl:   1280px;
+  --breakpoint-2xl:  1440px;
+}
+
+/* ── Base resets ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-primary);
+  color: var(--color-black);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.35;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

@@ -1,0 +1,45 @@
+// ─────────────────────────────────────────────
+// COLOR TOKENS
+// Extracted from Lumind UI Kit (Figma: m7BBIrXM5w2LnFRDrqqaV2)
+// ─────────────────────────────────────────────
+
+// Brand primitives
+$color-purple:         #8355F8;
+$color-light-purple:   #E6DCFF;
+$color-lighter-purple: #E1D4FF;
+$color-lightest-purple:#E9E1FF;
+
+// Neutrals
+$color-black:          #202020;
+$color-white:          #FFFFFF;
+$color-bg:             #F6F6F6;
+$color-dark-navy:      #0F1422;
+
+// Semantic
+$color-error:          #FF5F5F;
+
+// Black alpha scale
+$color-black-02:   rgba(32, 32, 32, 0.02);
+$color-black-06:   rgba(32, 32, 32, 0.06);
+$color-black-10:   rgba(32, 32, 32, 0.10);
+$color-black-20:   rgba(32, 32, 32, 0.20);
+$color-black-25:   rgba(32, 32, 32, 0.25);
+$color-black-70:   rgba(32, 32, 32, 0.70);
+
+// White alpha scale
+$color-white-25:   rgba(255, 255, 255, 0.25);
+$color-white-60:   rgba(255, 255, 255, 0.60);
+
+// Light-purple alpha scale
+$color-light-purple-50: rgba(230, 220, 255, 0.50);
+$color-light-purple-80: rgba(230, 220, 255, 0.80);
+
+// Gradients (as CSS strings — use with unquote() or interpolation)
+$gradient-bg-fade:
+  linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(246, 246, 246, 0) 14%);
+
+$gradient-purple-white:
+  linear-gradient(180deg, rgba(204, 184, 255, 1) 0%, rgba(250, 248, 255, 1) 50%);
+
+$gradient-purple-glow:
+  linear-gradient(90deg, rgba(230, 220, 255, 0.5) 0%, rgba(131, 85, 248, 1) 50%, rgba(230, 220, 255, 0.5) 100%);

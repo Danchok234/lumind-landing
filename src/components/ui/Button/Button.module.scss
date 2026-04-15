@@ -1,0 +1,116 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.button {
+  // reset
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  // layout
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+
+  // base shape
+  border-radius: t.$radius-full;
+
+  // typography
+  @include m.text-btn;
+
+  // transitions
+  transition:
+    transform t.$transition-fast,
+    box-shadow t.$transition-base,
+    background-color t.$transition-base;
+
+  // press scale
+  &:active {
+    transform: scale(0.92);
+  }
+
+  @include m.focus-ring;
+  @include m.disabled;
+}
+
+// ── Variants ────────────────────────────────
+
+.button--primary {
+  background-color: t.$color-purple;
+  color: t.$color-white;
+  border: 1px solid t.$color-purple;
+
+  &:hover {
+    background-color: darken(#8355F8, 6%);
+    box-shadow: 0 4px 24px rgba(131, 85, 248, 0.35);
+  }
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: t.$color-black;
+  border: 1px solid t.$color-black;
+
+  &:hover {
+    background-color: t.$color-black-06;
+  }
+}
+
+.button--ghost {
+  background-color: transparent;
+  color: t.$color-purple;
+  border: 1px solid t.$color-light-purple;
+
+  &:hover {
+    background-color: t.$color-light-purple;
+  }
+}
+
+// ── Sizes ────────────────────────────────────
+
+.button--md {
+  height: 60px;
+  padding: 0 t.$padding-btn-x;
+  min-width: 160px;
+}
+
+.button--sm {
+  height: 44px;
+  padding: 0 24px;
+  font-size: t.$fs-sm;
+}
+
+// ── Modifiers ────────────────────────────────
+
+.button--full {
+  width: 100%;
+}
+
+// ── Glow effect (primary only) ───────────────
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle 80px at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity t.$transition-base;
+
+  .button--primary:hover & {
+    opacity: 1;
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
