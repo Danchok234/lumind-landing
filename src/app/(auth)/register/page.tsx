@@ -1,10 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import Link from 'next/link';
+import { FormEvent, useMemo, useState } from 'react';
 import { AuthCard } from '@/components/auth';
-import { Input } from '@/components/ui';
-import { register } from '@/lib/api/auth';
+import { Button, Card, Input, Typography } from '@/components/ui';
+import { register, requestVerifyToken } from '@/lib/api/auth';
 import { ApiClientError } from '@/lib/api/client';
 import { validateRegisterForm } from '@/lib/validation/auth';
 import type { FormErrors, RegisterFormValues } from '@/types/auth';
@@ -19,11 +19,32 @@ const INITIAL_VALUES: RegisterFormValues = {
 };
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [values, setValues] = useState<RegisterFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<FormErrors<RegisterFormValues>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | undefined>(undefined);
+  const [verificationEmail, setVerificationEmail] = useState<string | undefined>(undefined);
+  const [resendMessage, setResendMessage] = useState<string | undefined>(undefined);
+  const [isResending, setIsResending] = useState(false);
+
+  const mailboxUrl = useMemo(() => {
+    if (!verificationEmail) {
+      return 'https://mail.google.com';
+    }
+
+    const domain = verificationEmail.split('@')[1]?.toLowerCase();
+    if (domain === 'gmail.com' || domain === 'googlemail.com') {
+      return 'https://mail.google.com';
+    }
+    if (domain === 'outlook.com' || domain === 'hotmail.com' || domain === 'live.com') {
+      return 'https://outlook.live.com/mail';
+    }
+    if (domain === 'yahoo.com') {
+      return 'https://mail.yahoo.com';
+    }
+
+    return 'https://mail.google.com';
+  }, [verificationEmail]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,14 +61,14 @@ export default function RegisterPage() {
 
     try {
       await register({
-        first_name: values.first_name,
-        second_name: values.second_name,
         email: values.email,
         password: values.password,
+        display_first_name: values.first_name.trim() || undefined,
+        display_last_name: values.second_name.trim() || undefined,
       });
 
-      router.push('/');
-      router.refresh();
+      setVerificationEmail(values.email);
+      setResendMessage('We sent a verification email. Please check your inbox.');
     } catch (error) {
       if (error instanceof ApiClientError) {
         setFormError(error.message);
@@ -58,6 +79,72 @@ export default function RegisterPage() {
       setIsSubmitting(false);
     }
   };
+
+  const handleResend = async () => {
+    if (!verificationEmail) {
+      return;
+    }
+
+    setIsResending(true);
+    setResendMessage(undefined);
+    setFormError(undefined);
+
+    try {
+      await requestVerifyToken({ email: verificationEmail });
+      setResendMessage('Verification email sent again.');
+    } catch (error) {
+      if (error instanceof ApiClientError) {
+        setFormError(error.message);
+      } else {
+        setFormError('Unable to resend verification email now.');
+      }
+    } finally {
+      setIsResending(false);
+    }
+  };
+
+  if (verificationEmail) {
+    return (
+      <Card className={styles.noticeCard}>
+        <Typography variant="h3" as="h1">
+          Check your inbox
+        </Typography>
+        <Typography variant="p" className={styles.noticeText}>
+          We sent a verification email to <strong>{verificationEmail}</strong>.
+        </Typography>
+
+        {resendMessage && <p className={styles.noticeSuccess}>{resendMessage}</p>}
+        {formError && <p className={styles.noticeError}>{formError}</p>}
+
+        <div className={styles.noticeActions}>
+          <Button
+            type="button"
+            onClick={() => window.open(mailboxUrl, '_blank', 'noopener,noreferrer')}
+          >
+            Open mail
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={handleResend}
+            disabled={isResending}
+          >
+            {isResending ? 'Sending...' : 'Resend email'}
+          </Button>
+        </div>
+
+        <Link
+          href={`/verify-email?email=${encodeURIComponent(verificationEmail)}`}
+          className={styles.link}
+        >
+          I already have a token
+        </Link>
+        <Link href="/login" className={styles.link}>
+          Back to sign in
+        </Link>
+      </Card>
+    );
+  }
 
   return (
     <AuthCard
@@ -72,7 +159,7 @@ export default function RegisterPage() {
     >
       <div className={styles.fields}>
         <Input
-          label="First name"
+          label="First name (optional)"
           value={values.first_name}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, first_name: event.target.value }))
@@ -83,7 +170,7 @@ export default function RegisterPage() {
         />
 
         <Input
-          label="Second name"
+          label="Last name (optional)"
           value={values.second_name}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, second_name: event.target.value }))

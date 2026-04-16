@@ -5,7 +5,9 @@ import type {
   ForgotPasswordPayload,
   LoginPayload,
   RegisterPayload,
+  RequestVerifyTokenPayload,
   ResetPasswordPayload,
+  VerifyEmailPayload,
 } from '@/types/auth';
 
 import { ApiClientError, apiRequest } from './client';
@@ -56,6 +58,20 @@ export async function login(payload: LoginPayload) {
 
 export function register(payload: RegisterPayload) {
   return apiRequest<AuthSessionResponse>('api/v2/auth/register', {
+    method: 'POST',
+    body: payload,
+  });
+}
+
+export function requestVerifyToken(payload: RequestVerifyTokenPayload) {
+  return apiRequest<AuthOkResponse>('api/v2/auth/request-verify-token', {
+    method: 'POST',
+    body: payload,
+  });
+}
+
+export function verifyEmail(payload: VerifyEmailPayload) {
+  return apiRequest<AuthOkResponse>('api/v2/auth/verify', {
     method: 'POST',
     body: payload,
   });

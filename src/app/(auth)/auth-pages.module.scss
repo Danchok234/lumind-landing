@@ -34,3 +34,28 @@
     text-decoration: underline;
   }
 }
+
+.noticeCard {
+  max-width: 420px;
+  margin-inline: auto;
+  @include m.flex-col(16px, stretch, flex-start);
+}
+
+.noticeText {
+  color: t.$color-black-70;
+}
+
+.noticeActions {
+  @include m.flex-col(12px, stretch, flex-start);
+}
+
+.noticeSuccess {
+  color: #34c17a;
+  font-size: t.$fs-sm;
+}
+
+.noticeError {
+  color: t.$color-error;
+  font-size: t.$fs-sm;
+}
+

@@ -21,10 +21,10 @@ export interface LoginPayload {
 }
 
 export interface RegisterPayload {
-  first_name: string;
-  second_name: string;
   email: string;
   password: string;
+  display_first_name?: string;
+  display_last_name?: string;
 }
 
 export interface ForgotPasswordPayload {
@@ -34,6 +34,14 @@ export interface ForgotPasswordPayload {
 export interface ResetPasswordPayload {
   token: string;
   password: string;
+}
+
+export interface VerifyEmailPayload {
+  token: string;
+}
+
+export interface RequestVerifyTokenPayload {
+  email: string;
 }
 
 export interface LoginFormValues {
@@ -57,6 +65,11 @@ export interface ResetPasswordFormValues {
   token: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface VerifyEmailFormValues {
+  email: string;
+  code: string;
 }
 
 export type FormErrors<TValues> = Partial<Record<keyof TValues, string>>;

@@ -4,10 +4,12 @@ import type {
   LoginFormValues,
   RegisterFormValues,
   ResetPasswordFormValues,
+  VerifyEmailFormValues,
 } from '@/types/auth';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD = 8;
+const VERIFY_CODE_REGEX = /^\d{4,8}$/;
 
 export function validateLoginForm(
   values: LoginFormValues,
@@ -31,14 +33,6 @@ export function validateRegisterForm(
   values: RegisterFormValues,
 ): FormErrors<RegisterFormValues> {
   const errors: FormErrors<RegisterFormValues> = {};
-
-  if (!values.first_name.trim()) {
-    errors.first_name = 'First name is required';
-  }
-
-  if (!values.second_name.trim()) {
-    errors.second_name = 'Second name is required';
-  }
 
   if (!values.email.trim()) {
     errors.email = 'Email is required';
@@ -94,6 +88,26 @@ export function validateResetPasswordForm(
     errors.confirmPassword = 'Please confirm your password';
   } else if (values.confirmPassword !== values.password) {
     errors.confirmPassword = 'Passwords do not match';
+  }
+
+  return errors;
+}
+
+export function validateVerifyEmailForm(
+  values: VerifyEmailFormValues,
+): FormErrors<VerifyEmailFormValues> {
+  const errors: FormErrors<VerifyEmailFormValues> = {};
+
+  if (!values.email.trim()) {
+    errors.email = 'Email is required';
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = 'Enter a valid email';
+  }
+
+  if (!values.code.trim()) {
+    errors.code = 'Verification code is required';
+  } else if (!VERIFY_CODE_REGEX.test(values.code.trim())) {
+    errors.code = 'Code should contain 4 to 8 digits';
   }
 
   return errors;
