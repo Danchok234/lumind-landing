@@ -1,0 +1,26 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.page {
+  min-height: 100dvh;
+  background: t.$color-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 60px;
+
+  @media (max-width: 640px) {
+    padding-block: 40px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-inline: 16px;
+}
+
+.content {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+}

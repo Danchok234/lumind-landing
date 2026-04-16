@@ -10,10 +10,10 @@
   width: 100%;
   max-width: l.$container-max;
   margin-inline: auto;
-  padding-inline: s.$container-px;
+  padding-inline: l.$container-px;
 
   @include bp.md {
-    padding-inline: s.$container-px-md;
+    padding-inline: l.$container-px-md;
   }
 }
 

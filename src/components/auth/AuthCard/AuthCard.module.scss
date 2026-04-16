@@ -1,0 +1,68 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: t.$radius-lg;
+  border: 1px solid t.$color-black-06;
+  box-shadow: t.$shadow-soft;
+  padding: 40px 32px;
+
+  @media (max-width: 640px) {
+    padding: 32px 20px;
+  }
+}
+
+.header {
+  @include m.flex-col(10px, center, center);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.form {
+  @include m.flex-col(16px, stretch, flex-start);
+}
+
+.message {
+  font-size: t.$fs-sm;
+  padding: 12px 14px;
+  border-radius: t.$radius-xs;
+}
+
+.error {
+  background: rgba(255, 95, 95, 0.1);
+  color: t.$color-error;
+}
+
+.success {
+  background: rgba(52, 193, 122, 0.1);
+  color: #34c17a;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  border-top: 1px solid t.$color-black-06;
+  padding-top: 20px;
+}
+
+.footerText {
+  color: t.$color-black-70;
+  font-size: t.$fs-sm;
+  margin-bottom: 10px;
+}
+
+.switchText {
+  color: t.$color-black-70;
+  font-size: t.$fs-sm;
+}
+
+.link {
+  color: t.$color-purple;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

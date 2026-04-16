@@ -1,0 +1,36 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.fields {
+  @include m.flex-col(16px, stretch, flex-start);
+}
+
+.metaRow {
+  @include m.flex-row(12px, center, space-between);
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: t.$fs-sm;
+  color: t.$color-black-70;
+  cursor: pointer;
+
+  input {
+    accent-color: t.$color-purple;
+    cursor: pointer;
+  }
+}
+
+.link {
+  color: t.$color-purple;
+  text-decoration: none;
+  font-size: t.$fs-sm;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

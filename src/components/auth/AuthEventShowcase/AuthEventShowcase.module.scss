@@ -1,0 +1,62 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.showcase {
+  display: none;
+
+  @media (min-width: 1200px) {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+.right {
+  @media (min-width: 1200px) {
+    transform: translateY(20px);
+  }
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid t.$color-black-06;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.cover {
+  height: 88px;
+  border-radius: t.$radius-sm;
+  margin-bottom: 12px;
+}
+
+.coverPurple {
+  background: linear-gradient(135deg, #8355f8 0%, #e6dcff 100%);
+}
+
+.coverLilac {
+  background: linear-gradient(135deg, #d8c7ff 0%, #f7f3ff 100%);
+}
+
+.coverDark {
+  background: linear-gradient(135deg, #0f1422 0%, #4a4d63 100%);
+}
+
+.coverSky {
+  background: linear-gradient(135deg, #6f96ff 0%, #e9efff 100%);
+}
+
+.coverMixed {
+  background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
+}
+
+.meta {
+  @include m.flex-col(8px, flex-start, flex-start);
+}
+
+.meta h3 {
+  font-size: t.$fs-sm;
+  line-height: 1.2;
+}
+
