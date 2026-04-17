@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FormEvent, useMemo, useState } from 'react';
 import { AuthCard } from '@/components/auth';
 import { Button, Card, Input, Typography } from '@/components/ui';
-import { register, requestVerifyToken } from '@/lib/api/auth';
+import { getGoogleOAuthStartUrl, register, requestVerifyToken } from '@/lib/api/auth';
 import { ApiClientError } from '@/lib/api/client';
 import { validateRegisterForm } from '@/lib/validation/auth';
 import type { FormErrors, RegisterFormValues } from '@/types/auth';
@@ -22,6 +22,7 @@ export default function RegisterPage() {
   const [values, setValues] = useState<RegisterFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<FormErrors<RegisterFormValues>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isGoogleRedirecting, setIsGoogleRedirecting] = useState(false);
   const [formError, setFormError] = useState<string | undefined>(undefined);
   const [verificationEmail, setVerificationEmail] = useState<string | undefined>(undefined);
   const [resendMessage, setResendMessage] = useState<string | undefined>(undefined);
@@ -103,6 +104,21 @@ export default function RegisterPage() {
     }
   };
 
+  const handleGoogleSignUp = () => {
+    try {
+      setFormError(undefined);
+      setIsGoogleRedirecting(true);
+
+      console.info('start_google_oauth');
+      const googleUrl = getGoogleOAuthStartUrl();
+      window.location.assign(googleUrl);
+    } catch (error) {
+      console.error('start_google_oauth_fail', { error });
+      setFormError('Google OAuth is not configured. Please contact support.');
+      setIsGoogleRedirecting(false);
+    }
+  };
+
   if (verificationEmail) {
     return (
       <Card className={styles.noticeCard}>
@@ -157,6 +173,20 @@ export default function RegisterPage() {
       onSubmit={handleSubmit}
       formError={formError}
     >
+      <Button
+        type="button"
+        variant="secondary"
+        fullWidth
+        onClick={handleGoogleSignUp}
+        disabled={isGoogleRedirecting || isSubmitting}
+      >
+        {isGoogleRedirecting ? 'Redirecting to Google...' : 'Continue with Google'}
+      </Button>
+
+      <div className={styles.divider} aria-hidden="true">
+        <span>or</span>
+      </div>
+
       <div className={styles.fields}>
         <Input
           label="First name (optional)"

@@ -8,6 +8,27 @@ export interface AuthSessionResponse {
   user: AuthUser;
   accessToken?: string;
   refreshToken?: string;
+  access_token?: string;
+  token_type?: string;
+}
+
+export interface AuthErrorDetailObject {
+  code?: string;
+  message?: string;
+  reason?: string;
+}
+
+export type AuthErrorDetail = string | AuthErrorDetailObject;
+
+export interface GoogleCallbackPayload {
+  code: string;
+}
+
+export interface GoogleCallbackResponse {
+  access_token: string;
+  token_type: string;
+  is_new_user: boolean;
+  user: AuthUser;
 }
 
 export interface AuthOkResponse {
